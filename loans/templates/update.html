@@ -1,0 +1,21 @@
+<h1>Update Equipment</h1>
+ 
+<form action="updaterecord/{{ items.id }}" method="post">
+{% csrf_token %}
+Inventory Number:<br>
+<input name="invnumber" value="{{ items.invnumber }}">
+<br><br>
+Category:<br>
+<input name="category" value="{{ items.category }}">
+<br><br>
+Description:<br>
+<input name="description" value="{{ items.description }}">
+<br><br>
+Condition:<br>
+<input name="condition" value="{{ items.condition }}">
+<br><br>
+Checked Out?:<br>
+<input name="checkedout" value="{{ items.checkedout }}">
+<br><br>
+<input type="submit" value="Submit">
+</form>

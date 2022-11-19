@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<body>
+ 
+<table border='1'>
+ <tr>
+   <th>ID</th>
+   <th>Inventory Number</th>
+   <th>Category</th>
+   <th>Description</th>
+   <th>Condition</th>
+   <th>Checked Out?</th>
+ </tr>
+ {% for x in items %}
+   <tr>
+     <td>{{ x.id }}</td>
+     <td>{{ x.invnumber }}</td>
+     <td>{{ x.category }}</td>
+     <td>{{ x.description }}</td>
+     <td>{{ x.condition }}</td>
+     <td>{{ x.checkedout }}</td>
+   </tr>
+ {% endfor %}
+</table>
+ 
+</body>
+</html>

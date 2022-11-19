@@ -1,0 +1,20 @@
+<h1>Add Equipment</h1>
+ 
+<form action="addrecord/" method="post">
+{% csrf_token %}
+Inventory Number:<br>
+<input name="invnumber">
+<br><br>
+Category:<br>
+<input name="category">
+<br><br>
+Description
+<input name="description">
+<br><br>
+Condition
+<input name="condition">
+<br><br>
+Checked Out?
+<input name="checkedout">
+<br><br>
+<input type="submit" value="Submit">
