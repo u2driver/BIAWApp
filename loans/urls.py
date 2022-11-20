@@ -7,5 +7,11 @@ urlpatterns = [
    path('add/addrecord/', views.addrecord, name='addrecord'),
    path('update/<int:id>', views.update, name='update'),
    path('update/updaterecord/<int:id>', views.updaterecord, name='updaterecord'),
+   
+   path('add1/', views.add1, name='add1'),
+   path('add1/addrecord1/', views.addrecord1, name='addrecord1'),
+   path('update1/<int:id>', views.update1, name='update1'),
+   path('update1/updaterecord1/<int:id>', views.updaterecord1, name='updaterecord1'),
+   
    path('testing/', views.testing, name="testing"),
 ]

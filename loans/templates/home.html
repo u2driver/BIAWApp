@@ -13,7 +13,27 @@
 </tr>
 {% endfor %}
 </table>
- 
 <p>
    <a href="add/">Add equipment</a>
+   </p>
+
+<h1>Clients</h1>
+
+<table border="1">
+{% for x in clients %}
+<tr>
+   <td><a href="update/{{ x.id }}">{{ x.id }}</a></td>
+   <td>{{ x.id }}</td>
+   <td>{{ x.clientID }}</td>
+   <td>{{ x.first_name }}</td>
+   <td>{{ x.last_name }}</td>
+   <td>{{ x.phone_number }}</td>
+   <td>{{ x.address }}</td>
+   <td>{{ x.city }}</td>
+   <td>{{ x.zip }}</td>
+</tr>
+{% endfor %}
+</table>
+<p>
+   <a href="add1/">Add client</a>
    </p>
