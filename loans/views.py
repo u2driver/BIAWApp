@@ -100,7 +100,7 @@ def updaterecord1(request, id):
  return HttpResponseRedirect(reverse('home'))
 
 def testing(request):
- items = Equipment.objects.filter(category = 'wheelchair', condition = 'good').values()
+ items = Equipment.objects.filter(category = 'Wheel Chair', condition = 'Good').values()
  template = loader.get_template('template.html')
  context = {
    'items': items,
