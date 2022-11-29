@@ -10,6 +10,7 @@
    <td>{{ x.description }}</td>
    <td>{{ x.condition }}</td>
    <td>{{ x.checkedout }}</td>
+   <td><a href="delete/{{ x.id }}">delete</a></td>
 </tr>
 {% endfor %}
 </table>
@@ -17,7 +18,7 @@
    <a href="add/">Add equipment</a>
    </p>
 
-<h1>Clients</h1>
+<h1>Loan Transactions</h1>
 
 <table border="1">
 {% for x in clients %}
@@ -31,6 +32,7 @@
    <td>{{ x.address }}</td>
    <td>{{ x.city }}</td>
    <td>{{ x.zip }}</td>
+   <td><a href="delete/{{ x.id }}">delete</a></td>
 </tr>
 {% endfor %}
 </table>
