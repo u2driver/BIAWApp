@@ -12,6 +12,7 @@ urlpatterns = [
    path('add1/addrecord1/', views.addrecord1, name='addrecord1'),
    path('update1/<int:id>', views.update1, name='update1'),
    path('update1/updaterecord1/<int:id>', views.updaterecord1, name='updaterecord1'),
+   path('del_equip/<int:id>', views.del_equip, name='del_equip'),
    
    path('testing/', views.testing, name="testing"),
 ]
