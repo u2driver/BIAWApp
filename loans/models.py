@@ -7,7 +7,7 @@ class Equipment(models.Model):
     condition = models.CharField(max_length=225)
     checkedout = models.CharField(max_length=5)
 
-class Clients(models.Model):
+class Loans(models.Model):
     clientID = models.CharField(max_length=20)
     first_name = models.CharField(max_length=50)
     last_name = models.CharField (max_length=50)

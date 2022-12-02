@@ -7,11 +7,11 @@ from django.template import loader
 import loans.models
 from loans import models
 from .models import Equipment
-from .models import Clients
+from .models import Loans
  
 def home(request):
  items = Equipment.objects.all().values()
- clients = Clients.objects.all().values()
+ clients = Loans.objects.all().values()
  template = loader.get_template('home.html')
  context = {
    'items': items,
@@ -69,12 +69,12 @@ def addrecord1(request):
  x = request.POST['address']
  y = request.POST['city']
  z = request.POST['zip']
- clients = Clients(clientID = t, first_name = u, last_name = v, phone_number = w, address = x, city = y, zip = z)
+ clients = Loans(clientID = t, first_name = u, last_name = v, phone_number = w, address = x, city = y, zip = z)
  clients.save()
  return HttpResponseRedirect(reverse('home'))
 
 def update1(request, id):
- clients = Clients.objects.get(id=id)
+ clients = Loans.objects.get(id=id)
  template = loader.get_template('update1.html')
  context = {
    'clients': clients,
@@ -89,7 +89,7 @@ def updaterecord1(request, id):
  address = request.POST['address']
  city = request.POST['city']
  zip = request.POST['zip']
- clients = Clients.objects.get(id=id)
+ clients = Loans.objects.get(id=id)
  clients.clientID = clientID
  clients.first_name = first_name
  clients.last_name = last_name
@@ -105,7 +105,7 @@ def del_equip(request, id):
   return HttpResponseRedirect(reverse('home'))
 
 def del_client(request, id):
-  clients = Clients.objects.get(id=id)
+  clients = Loans.objects.get(id=id)
   clients.delete()
   return HttpResponseRedirect(reverse('home'))
 
