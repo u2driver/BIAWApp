@@ -104,6 +104,11 @@ def del_equip(request, id):
   items.delete()
   return HttpResponseRedirect(reverse('home'))
 
+def del_client(request, id):
+  clients = Clients.objects.get(id=id)
+  clients.delete()
+  return HttpResponseRedirect(reverse('home'))
+
 def testing(request):
  items = Equipment.objects.filter(category = 'Wheel Chair', condition = 'Good').values()
  template = loader.get_template('template.html')
