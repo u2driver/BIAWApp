@@ -2,9 +2,6 @@
  
 <form action="addrecord1/" method="post">
 {% csrf_token %}
-Client ID:<br>
-<input name="clientID">
-<br><br>
 First Name:<br>
 <input name="first_name">
 <br><br>
@@ -22,5 +19,14 @@ City
 <br><br>
 Zip Code
 <input name="zip">
+<br><br>
+Date checked out
+<input name="date_out">
+<br><br>
+Date checked in
+<input name="date_in", use_required_attribute=False>
+<br><br>
+Equipment ID
+<input name="equip_id">
 <br><br>
 <input type="submit" value="Submit">

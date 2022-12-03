@@ -8,11 +8,14 @@ class Equipment(models.Model):
     checkedout = models.CharField(max_length=5)
 
 class Loans(models.Model):
-    clientID = models.CharField(max_length=20)
     first_name = models.CharField(max_length=50)
     last_name = models.CharField (max_length=50)
     phone_number = models.CharField(max_length=20)
     address = models.CharField(max_length=50)
     city = models.CharField(max_length=20)
     zip = models.IntegerField()
+    date_out = models.DateField(blank=True, default =None)
+    date_in = models.DateField(blank=True, default=None)
+    equip_id = models.IntegerField(blank=True, default=None)
+    
     

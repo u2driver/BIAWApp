@@ -62,14 +62,16 @@ def add1(request):
  return HttpResponse(template.render({}, request))
 
 def addrecord1(request):
- t = request.POST['clientID']
- u = request.POST['first_name']
- v = request.POST['last_name']
- w = request.POST['phone_number']
- x = request.POST['address']
- y = request.POST['city']
- z = request.POST['zip']
- clients = Loans(clientID = t, first_name = u, last_name = v, phone_number = w, address = x, city = y, zip = z)
+ p = request.POST['first_name']
+ q = request.POST['last_name']
+ r = request.POST['phone_number']
+ s = request.POST['address']
+ t = request.POST['city']
+ u = request.POST['zip']
+ v = request.POST['date_out']
+ w = request.POST['date_in']
+ x = request.POST['equip_id']
+ clients = Loans(first_name = p, last_name = q, phone_number = r, address = s, city = t, zip = u, date_out = v, date_in= w, equip_id=x)
  clients.save()
  return HttpResponseRedirect(reverse('home'))
 
@@ -82,20 +84,25 @@ def update1(request, id):
  return HttpResponse(template.render(context, request))
  
 def updaterecord1(request, id):
- clientID = request.POST['clientID']
  first_name = request.POST['first_name']
  last_name = request.POST['last_name']
  phone_number = request.POST['phone_number']
  address = request.POST['address']
  city = request.POST['city']
  zip = request.POST['zip']
+ date_out = request.POST['date_out']
+ date_in = request.POST['date_in']
+ equip_id = request.POST['equip_id']
  clients = Loans.objects.get(id=id)
- clients.clientID = clientID
  clients.first_name = first_name
  clients.last_name = last_name
  clients.phone_number = phone_number
  clients.address = address
+ clients.city = city
  clients.zip = zip
+ clients.date_out = date_out
+ clients.date_in = date_in
+ clients.equip_id = equip_id
  clients.save()
  return HttpResponseRedirect(reverse('home'))
 
