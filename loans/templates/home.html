@@ -21,6 +21,20 @@
 <h1>Loan Transactions</h1>
 
 <table border="1">
+
+<tr>
+   <th></th>
+   <th></th>
+   <th> First Name </th>
+   <th> Last Name </th>
+   <th> Phone </th>
+   <th> Address </th>
+   <th> City </th>
+   <th> Zip Code </th>
+   <th> Date Out </th>
+   <th> Date In </th>
+   <th> Equip Code </th>
+</tr> 
 {% for x in clients %}
 <tr>
    <td><a href="update_loan/{{ x.id }}">update</a></td>
@@ -39,5 +53,5 @@
 {% endfor %}
 </table>
 <p>
-   <a href="add_loan/">Add Transaction</a>
+   <a href="add_loan/">Add New Loan</a>
    </p>
