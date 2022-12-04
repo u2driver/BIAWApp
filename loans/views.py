@@ -8,6 +8,7 @@ import loans.models
 from loans import models
 from .models import Equipment
 from .models import Loans
+from .forms import LoanForm
  
 def home(request):
  items = Equipment.objects.all().values()
@@ -18,10 +19,26 @@ def home(request):
    'clients': clients,
  }
  return HttpResponse(template.render(context, request))
+
+def add_loan(request):
+  
+    # create object of form
+  if request.method == 'POST':
+    loan = LoanForm(request.POST)
+     
+    # check if form data is valid
+    if loan.is_valid():
+        # save the form data to model
+      loan.save()
+  else:
+    loan = LoanForm
+  return render(request, "loan.html", {'form': loan})
+
  
 def add(request):
  template = loader.get_template('add.html')
  return HttpResponse(template.render({}, request))
+
 
 def addrecord(request):
  v = request.POST['invnumber']

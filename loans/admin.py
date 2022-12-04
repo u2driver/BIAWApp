@@ -4,3 +4,4 @@ from .models import Loans
 # Register your models here.
 admin.site.register(Equipment)
 admin.site.register(Loans)
+
