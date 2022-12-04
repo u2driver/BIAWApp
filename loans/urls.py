@@ -3,6 +3,7 @@ from loans import views
 
 urlpatterns = [
    path("", views.home, name="home"),
+   path('display_loan/<int:id>', views.display_loan, name = 'display_loan'),
    path('add/', views.add, name='add'),
    path('add/addrecord/', views.addrecord, name='addrecord'),
    path('update/<int:id>', views.update, name='update'),

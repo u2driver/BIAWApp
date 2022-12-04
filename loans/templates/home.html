@@ -47,7 +47,7 @@
    <td>{{ x.zip }}</td>
    <td>{{ x.date_out }}</td>
    <td>{{ x.date_in }}</td>
-   <td>{{ x.equip_id }}</td>
+   <td><a href="display_loan/{{ x.equip_id }}">{{x.equip_id}}</a></td>
    <td><a href="del_client/{{ x.id }}">delete</a></td>
 </tr>
 {% endfor %}

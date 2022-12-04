@@ -20,6 +20,15 @@ def home(request):
  }
  return HttpResponse(template.render(context, request))
 
+def display_loan(request, id):
+  items = Equipment.objects.get(id=id)
+  template = loader.get_template('display_loan.html')
+  context = {
+    'items': items,
+}
+  return HttpResponse(template.render(context, request)) 
+  
+
 def add_loan(request):
   
     # create object of form
