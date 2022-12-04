@@ -30,6 +30,7 @@ def add_loan(request):
     if loan.is_valid():
         # save the form data to model
       loan.save()
+      return HttpResponseRedirect(reverse('home'))
   else:
     loan = LoanForm
   return render(request, "loan.html", {'form': loan})
@@ -122,6 +123,19 @@ def updaterecord1(request, id):
  clients.equip_id = equip_id
  clients.save()
  return HttpResponseRedirect(reverse('home'))
+
+def update_loan(request, id):
+  loan = Loans.objects.get(id=id)
+  
+  if request.method == 'POST':
+    form = LoanForm(request.POST, instance=loan)
+    if form.is_valid():
+      form.save()
+      return HttpResponseRedirect(reverse('home'))
+  else:
+    form = LoanForm(instance=loan)
+      
+  return render(request, 'loan_update.html', {'form': form})
 
 def del_equip(request, id):
   items = Equipment.objects.get(id=id)
