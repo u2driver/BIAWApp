@@ -5,7 +5,7 @@ class Equipment(models.Model):
     category = models.CharField(max_length=10)
     description = models.CharField(max_length=225)
     condition = models.CharField(max_length=225)
-    checkedout = models.CharField(max_length=5)
+    checkedout = models.BooleanField()
 
 class Loans(models.Model):
     first_name = models.CharField(max_length=50)

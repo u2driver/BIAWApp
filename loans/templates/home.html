@@ -1,6 +1,15 @@
 <h1>Equipment</h1>
  
 <table border="1">
+<tr>
+   <th></th>
+   <th></th>
+   <th> Equip ID </th>
+   <th> Category </th>
+   <th> Description </th>
+   <th> Condition </th>
+   <th> Checked Out </th>
+</tr> 
 {% for x in items %}
 <tr>
    <td><a href="update/{{ x.id }}">update</a></td>
@@ -18,7 +27,7 @@
    <a href="add/">Add equipment</a>
    </p>
 
-<h1>Loan Transactions</h1>
+<h1>Equipment Loans</h1>
 
 <table border="1">
 
