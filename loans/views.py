@@ -30,15 +30,20 @@ def display_loan(request, id):
   
 
 def add_loan(request):
-  
-    # create object of form
+  # create object of form
   if request.method == 'POST':
     loan = LoanForm(request.POST)
-     
-    # check if form data is valid
+  # check if form data is valid
     if loan.is_valid():
-        # save the form data to model
-      loan.save()
+      #check to see if equipment is already checked out:
+      x = Equipment.objects.get(id=loan.cleaned_data['equip_id'])
+      if x.checkedout:
+        print ("That equipment is already checked out")
+      # if equipment is available, save the form data to model
+      else:
+        loan.save()
+        x.checkedout = True
+        x.save()
       return HttpResponseRedirect(reverse('home'))
   else:
     loan = LoanForm
