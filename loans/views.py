@@ -38,7 +38,7 @@ def add_loan(request):
       #check to see if equipment is already checked out:
       x = Equipment.objects.get(id=loan.cleaned_data['equip_id'])
       if x.checkedout:
-        print ("That equipment is already checked out")
+        return HttpResponse("That equipment is already checked out")
       # if equipment is available, save the form data to model
       else:
         loan.save()
