@@ -144,7 +144,8 @@ def update_loan(request, id):
   if request.method == 'POST':
     form = LoanForm(request.POST, instance=loan)
     if form.is_valid():
-      if form.cleaned_data['date_in'] != "None":
+      print (form.cleaned_data['date_in'])
+      if form.cleaned_data['date_in'] is not None:
         x = Equipment.objects.get(id=form.cleaned_data['equip_id'])
         x.checkedout = False
         x.save()

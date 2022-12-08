@@ -16,7 +16,7 @@ class Loans(models.Model):
     zip = models.IntegerField()
     date_out = models.DateField(blank=True, null=True)
     date_in = models.DateField(blank=True, null=True)
-    equip_id = models.IntegerField(blank=True, null=True)
+    equip_id = models.IntegerField()
     
     
     
