@@ -3,12 +3,12 @@
 <table border="1">
 <tr>
    <th></th>
-   <th></th>
+   <th> Equip ID</th>
    <th> Inventory Number </th>
    <th> Category </th>
    <th> Description </th>
    <th> Condition </th>
-   <th> Checked Out </th>
+   <th> Status </th>
 </tr> 
 {% for x in items %}
 <tr>
@@ -19,9 +19,9 @@
    <td>{{ x.description }}</td>
    <td>{{ x.condition }}</td>
    {%if x.checkedout%}
-      <td><a href="display_client/{{ x.id }}">{{x.checkedout}}</a></td>
+      <td><a href="display_client/{{ x.id }}">{{'Checkedout'}}</a></td>
    {%else%}
-      <td>{{ x.checkedout }}</td>
+      <td>{{ "Available" }}</td>
    {%endif%}
    <td><a href="del_equip/{{ x.id }}">delete</a></td>
 </tr>
@@ -46,7 +46,7 @@
    <th> Zip Code </th>
    <th> Date Out </th>
    <th> Date In </th>
-   <th> Equip Code </th>
+   <th> Equip ID </th>
 </tr> 
 {% for x in clients %}
 <tr>
