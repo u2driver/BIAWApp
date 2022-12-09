@@ -26,6 +26,7 @@ def display_loan(request, id):
   context = {
     'items': items,
 }
+  print (items)
   return HttpResponse(template.render(context, request)) 
   
 
@@ -166,10 +167,11 @@ def del_client(request, id):
   clients.delete()
   return HttpResponseRedirect(reverse('home'))
 
-def testing(request):
- items = Equipment.objects.filter(category = 'Wheel Chair', condition = 'Good').values()
- template = loader.get_template('template.html')
+def display_client(request, id):
+ clients = Loans.objects.filter(equip_id = id).values()
+ template = loader.get_template('display_client.html')
  context = {
-   'items': items,
+   'clients': clients,
  }
+ print(clients)
  return HttpResponse(template.render(context, request))

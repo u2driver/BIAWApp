@@ -1,0 +1,16 @@
+<table border="1">
+    {% for x in clients %}
+    <tr>
+       <td>{{ x.id }}</td>
+       <td>{{ x.first_name }}</td>
+       <td>{{ x.last_name }}</td>
+       <td>{{ x.phone_number }}</td>
+       <td>{{ x.address }}</td>
+       <td>{{ x.city }}</td>
+       <td>{{ x.zip }}</td>
+       <td>{{ x.date_out }}</td>
+       <td>{{ x.date_in }}</td>
+       <td>{{ x.equip_id }}</td>
+    </tr>
+    {% endfor %}
+    </table>

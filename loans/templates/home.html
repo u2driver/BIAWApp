@@ -4,7 +4,7 @@
 <tr>
    <th></th>
    <th></th>
-   <th> Equip ID </th>
+   <th> Inventory Number </th>
    <th> Category </th>
    <th> Description </th>
    <th> Condition </th>
@@ -18,7 +18,11 @@
    <td>{{ x.category }}</td>
    <td>{{ x.description }}</td>
    <td>{{ x.condition }}</td>
-   <td>{{ x.checkedout }}</td>
+   {%if x.checkedout%}
+      <td><a href="display_client/{{ x.id }}">{{x.checkedout}}</a></td>
+   {%else%}
+      <td>{{ x.checkedout }}</td>
+   {%endif%}
    <td><a href="del_equip/{{ x.id }}">delete</a></td>
 </tr>
 {% endfor %}
