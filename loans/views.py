@@ -11,7 +11,7 @@ from .models import Loans
 from .forms import LoanForm
  
 def home(request):
- items = Equipment.objects.all().values()
+ items = Equipment.objects.order_by('category').all().values()
  clients = Loans.objects.all().values()
  template = loader.get_template('home.html')
  context = {
