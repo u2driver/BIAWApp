@@ -1,31 +1,49 @@
+<style>
+   .fixed_header tbody {
+      display:block;
+      #table-layout: fixed;
+      overflow:auto;
+      height:100px;
+      #width:100%;
+    }
+    .fixed_header thead {
+      display:block;
+      #table-layout: fixed;
+    }
+</style>
+
 <h1>Equipment</h1>
  
-<table border="1">
+<table class = "fixed_header", border="1">
+<thead>
 <tr>
-   <th></th>
+   <th>_____</th>
    <th> Equip ID</th>
    <th> Inventory Number </th>
-   <th> Category </th>
-   <th> Description </th>
-   <th> Condition </th>
-   <th> Status </th>
+   <th> Category________</th>
+   <th> Description________________ </th>
+   <th> Condition___ </th>
+   <th> Status______ </th>
 </tr> 
+</thead>
+<tbody>
 {% for x in items %}
 <tr>
    <td><a href="update/{{ x.id }}">update</a></td>
-   <td>{{ x.id }}</td>
-   <td>{{ x.invnumber }}</td>
-   <td>{{ x.category }}</td>
-   <td>{{ x.description }}</td>
-   <td>{{ x.condition }}</td>
+   <td style = "width: 60px">{{ x.id }}</td>
+   <td style = "width: 130px">{{ x.invnumber }}</td>
+   <td style = "width: 130px">{{ x.category }}</td>
+   <td style = "width: 200px">{{ x.description }}</td>
+   <td style = "width: 100px">{{ x.condition }}</td>
    {%if x.checkedout%}
-      <td><a href="display_client/{{ x.id }}">{{'Checkedout'}}</a></td>
+      <td><a href="display_client/{{ x.id }}">{{'Checked Out'}}</a></td>
    {%else%}
       <td>{{ "Available" }}</td>
    {%endif%}
    <td><a href="del_equip/{{ x.id }}">delete</a></td>
 </tr>
 {% endfor %}
+</tbody>
 </table>
 <p>
    <a href="add/">Add equipment</a>

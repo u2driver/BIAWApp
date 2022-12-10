@@ -26,7 +26,6 @@ def display_loan(request, id):
   context = {
     'items': items,
 }
-  print (items)
   return HttpResponse(template.render(context, request)) 
   
 
@@ -173,5 +172,4 @@ def display_client(request, id):
  context = {
    'clients': clients,
  }
- print(clients)
  return HttpResponse(template.render(context, request))
