@@ -6,7 +6,7 @@
       display:block;
       #table-layout: fixed;
       overflow:auto;
-      height:100px;
+      height:150px;
       #width:100%;
     }
     .fixed_header thead {
@@ -82,7 +82,7 @@
    <td>{{ x.zip }}</td>
    <td>{{ x.date_out }}</td>
    <td>{{ x.date_in }}</td>
-   <td><a href="display_loan/{{ x.equip_id }}">{{x.equip_id}}</a></td>
+   <td style = "width: 60px"><a href="display_loan/{{ x.equip_id }}">{{x.equip_id}}</a></td>
    <td><a href="del_client/{{ x.id }}">delete</a></td>
 </tr>
 {% endfor %}
