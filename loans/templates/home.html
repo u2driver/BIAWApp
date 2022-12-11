@@ -57,7 +57,7 @@
 <thead>
 <tr>
    <th></th>
-   <th>_______</th>
+   <th>______</th>
    <th> First Name_____ </th>
    <th> Last Name______ </th>
    <th> Phone________ </th>
@@ -81,7 +81,11 @@
    <td style = "width: 80px">{{ x.city }}</td>
    <td>{{ x.zip }}</td>
    <td>{{ x.date_out }}</td>
-   <td>{{ x.date_in }}</td>
+   {%if x.date_in is not None%}
+      <td>{{ x.date_in }}</td>
+   {%else%}%
+      <td>{{"Checked Out"}}
+   {%endif%}
    <td style = "width: 60px"><a href="display_loan/{{ x.equip_id }}">{{x.equip_id}}</a></td>
    <td><a href="del_client/{{ x.id }}">delete</a></td>
 </tr>
