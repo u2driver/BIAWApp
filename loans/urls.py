@@ -12,6 +12,5 @@ urlpatterns = [
    path('update_loan/<int:id>', views.update_loan, name='update_loan'),
    path('del_equip/<int:id>', views.del_equip, name='del_equip'),
    path('del_client/<int:id>', views.del_client, name='del_client'),
-   
    path('display_client/<int:id>', views.display_client, name="display_client"),
 ]
