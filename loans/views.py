@@ -26,11 +26,11 @@ def add_loan(request):
     loan = LoanForm(request.POST)
   # check if form data is valid
     if loan.is_valid():
-      #check to see if equip_id is valid
+      #check to see if equipment Id is valid:
       try:
         x = Equipment.objects.get(id=loan.cleaned_data['equip_id'])
       except:
-        return HttpResponse("That equipment code doesn't exist")
+        return HttpResponse("That equipment Id is invalid")
       #check to see if equipment is already checked out:
       if x.checkedout:
         return HttpResponse("That equipment is already checked out")
@@ -46,14 +46,32 @@ def add_loan(request):
 
 def update_loan(request, id):
   loan = Loans.objects.get(id=id)
+  y = loan.equip_id
   if request.method == 'POST':
     form = LoanForm(request.POST, instance=loan)
     if form.is_valid():
       if form.cleaned_data['date_in'] is not None:
-        x = Equipment.objects.get(id=form.cleaned_data['equip_id'])
-        x.checkedout = False
-        x.save()
-      form.save()
+        if loan.equip_id > 10 or loan.equip_id < 1:
+          return HttpResponse("That equipment id is invalid")
+        else:
+          x = Equipment.objects.get(id=form.cleaned_data['equip_id'])
+        if y == loan.equip_id:
+          loan.save()
+          if loan.date_in:
+            x.checkedout = False
+          else:
+            x.checkedout = True
+          x.save()
+        elif x.checkedout:
+          return HttpResponse("That equipment is already checked out")
+        # if equipment is available, save the form data to model
+        else:
+          loan.save()
+          if loan.date_in:
+            x.checkedout = False
+          else:
+            x.checkedout = True
+          x.save()
       return HttpResponseRedirect(reverse('home'))
   else:
     form = LoanForm(instance=loan)   
