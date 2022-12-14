@@ -26,8 +26,12 @@ def add_loan(request):
     loan = LoanForm(request.POST)
   # check if form data is valid
     if loan.is_valid():
+      #check to see if equip_id is valid
+      try:
+        x = Equipment.objects.get(id=loan.cleaned_data['equip_id'])
+      except:
+        return HttpResponse("That equipment code doesn't exist")
       #check to see if equipment is already checked out:
-      x = Equipment.objects.get(id=loan.cleaned_data['equip_id'])
       if x.checkedout:
         return HttpResponse("That equipment is already checked out")
       # if equipment is available, save the form data to model
