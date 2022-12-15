@@ -10,6 +10,8 @@ from .models import Equipment
 from .models import Loans
 from .forms import LoanForm
  
+maxEquip = 0
+
 def home(request):
  items = Equipment.objects.order_by('category').all().values()
  clients = Loans.objects.all().values()
@@ -50,28 +52,28 @@ def update_loan(request, id):
   if request.method == 'POST':
     form = LoanForm(request.POST, instance=loan)
     if form.is_valid():
-      if form.cleaned_data['date_in'] is not None:
-        if loan.equip_id > 10 or loan.equip_id < 1:
-          return HttpResponse("That equipment id is invalid")
+      #if form.cleaned_data['date_in'] is not None:
+      if loan.equip_id > 10 or loan.equip_id < 1:
+        return HttpResponse("That equipment id is invalid")
+      else:
+        x = Equipment.objects.get(id=form.cleaned_data['equip_id'])
+      if y == loan.equip_id:
+        #loan.save()
+        if loan.date_in:
+          x.checkedout = False
         else:
-          x = Equipment.objects.get(id=form.cleaned_data['equip_id'])
-        if y == loan.equip_id:
-          loan.save()
-          if loan.date_in:
-            x.checkedout = False
-          else:
-            x.checkedout = True
-          x.save()
-        elif x.checkedout:
-          return HttpResponse("That equipment is already checked out")
-        # if equipment is available, save the form data to model
+          x.checkedout = True
+        #x.save()
+      elif x.checkedout:
+        return HttpResponse("That equipment is already checked out")
+      # if equipment is available, save the form data to model
+      else:
+        if loan.date_in:
+          x.checkedout = False
         else:
-          loan.save()
-          if loan.date_in:
-            x.checkedout = False
-          else:
-            x.checkedout = True
-          x.save()
+          x.checkedout = True
+      x.save()
+      form.save()
       return HttpResponseRedirect(reverse('home'))
   else:
     form = LoanForm(instance=loan)   
@@ -139,3 +141,10 @@ def display_loan(request, id):
     'items': items,
 }
   return HttpResponse(template.render(context, request)) 
+
+#def findMax():
+#  num = Loans.objects.values_list('equip_id')
+#  maxNum = 0
+#  for x in num:
+#    maxNum+=1
+#  return maxNum
