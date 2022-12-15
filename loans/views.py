@@ -10,6 +10,8 @@ from .models import Equipment
 from .models import Loans
 from .forms import LoanForm
  
+maxEquip = 0
+
 def home(request):
  items = Equipment.objects.order_by('category').all().values()
  clients = Loans.objects.all().values()
@@ -57,7 +59,6 @@ def update_loan(request, id):
         x = Equipment.objects.get(id=form.cleaned_data['equip_id'])
       if y == loan.equip_id:
         #loan.save()
-        x = Equipment.objects.get(id=form.cleaned_data['equip_id'])
         if loan.date_in:
           x.checkedout = False
         else:
@@ -140,3 +141,10 @@ def display_loan(request, id):
     'items': items,
 }
   return HttpResponse(template.render(context, request)) 
+
+#def findMax():
+#  num = Loans.objects.values_list('equip_id')
+#  maxNum = 0
+#  for x in num:
+#    maxNum+=1
+#  return maxNum
