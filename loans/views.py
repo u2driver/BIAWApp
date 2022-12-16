@@ -70,8 +70,12 @@ def update_loan(request, id):
       else:
         if loan.date_in:
           x.checkedout = False
+          x.save()
         else:
           x.checkedout = True
+          x.save()
+        x = Equipment.objects.get(id=y)
+        x.checkedout = False
       x.save()
       form.save()
       return HttpResponseRedirect(reverse('home'))
