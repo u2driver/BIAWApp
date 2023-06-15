@@ -58,6 +58,10 @@ def update_loan(request, id):
         x = Equipment.objects.get(id=form.cleaned_data['equip_id'])
         x.checkedout = False
         x.save()
+      else:
+        x = Equipment.objects.get(id=form.cleaned_data['equip_id'])
+        x.checkedout = True
+        x.save()
       form.save()
       return HttpResponseRedirect(reverse('home'))
   else:
