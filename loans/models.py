@@ -14,6 +14,7 @@ class Loans(models.Model):
     address = models.CharField(max_length=50)
     city = models.CharField(max_length=20)
     zip = models.IntegerField()
+    email = models.CharField(max_length=50, default="")
     date_out = models.DateField()
     date_in = models.DateField(blank=True, null=True)
     equip_id = models.IntegerField()

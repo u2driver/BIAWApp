@@ -4,14 +4,17 @@
 <style>
    .fixed_header tbody {
       display:block;
-      #table-layout: fixed;
+      table-layout: fixed;
+      word-break: break-all;
+      word-wrap: break-word;
       overflow:auto;
       height:150px;
-      #width:100%;
     }
     .fixed_header thead {
       display:block;
-      #table-layout: fixed;
+      table-layout: fixed;
+      word-break: break-all;
+      word-wrap: break-word;
     }
 </style> 
 
@@ -64,6 +67,7 @@
    <th> Address________________ </th>
    <th> City______ </th>
    <th> Zip__ </th>
+   <th> Email_________________</th>
    <th> Date Out___ </th>
    <th> Date In______ </th>
    <th> Equip ID </th>
@@ -80,6 +84,7 @@
    <td style = "width: 180px">{{ x.address }}</td>
    <td style = "width: 80px">{{ x.city }}</td>
    <td>{{ x.zip }}</td>
+   <td style = "width: 180px">{{x.email }}</td>
    <td>{{ x.date_out }}</td>
    {%if x.date_in is not None%}
       <td>{{ x.date_in }}</td>
